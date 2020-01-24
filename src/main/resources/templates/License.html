@@ -6,10 +6,8 @@
 <script src="angular.min.js"></script>
 <script src="generateLicense.js"></script>
 
-<link rel="stylesheet"
-	href="bootstrap.min.css">
-<script
-	src="bootstrap.min.js"></script>
+<link rel="stylesheet" href="bootstrap.min.css">
+<script src="bootstrap.min.js"></script>
 <style>
 body {
 	margin: 5px;
@@ -335,6 +333,11 @@ body {
 
 						<li><a href="#tab13primary" data-toggle="tab"> Staff
 								Expenses</a></li>
+						<li><a href="#tab14primary" data-toggle="tab"> Data
+								Integration</a></li>
+								
+								<li><a href="#tab15primary" data-toggle="tab"> Regulatory
+								Report</a></li>
 
 
 					</ul></li>
@@ -2585,6 +2588,366 @@ body {
 
 
 				</div>
+
+				<!--         *************************DATA INTEGRATION*************************************************                                                                               -->
+
+				<div class="tab-pane fade" id="tab14primary"
+					ng-controller="UniQDataIntegrationController">
+
+					<form name="formDI" novalidate>
+						<h2 align="left" style="margin: 10px 20px 30px 10px">
+							<a href="#">UniQ Data Integration License</a>
+						</h2>
+						<div class="col-md-6">
+
+
+							<div class="form-group row">
+								<label for="inputEmail3" class="col-sm-3 col-form-label">Application
+									Name</label>
+								<div class="col-sm-6">
+									<input type="text" class="form-control" ng-model="di.appName"
+										ng-init="di.appName='UniQ_Soft_Technology'" id="inputEmail3"
+										readonly>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="inputEmail3" class="col-sm-3 col-form-label">Module
+									Name</label>
+								<div class="col-sm-6">
+									<input type="text" class="form-control" ng-model="di.module"
+										ng-init="di.module='DI'" id="inputEmail3" readonly>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="inputEmail3" class="col-sm-3 col-form-label">Version</label>
+								<div class="col-sm-6">
+									<input type="text" class="form-control" name="Version" required
+										ng-model="di.version" id="inputEmail3" placeholder="1.1.1">
+									<span style="color: red"
+										ng-show="formDI.$submitted && formDI.Version.$error.required">Version
+										is required.</span>
+
+
+								</div>
+
+
+
+
+							</div>
+							<div class="form-group row">
+								<label for="inputEmail3" class="col-sm-3 col-form-label">Email</label>
+								<div class="col-sm-6">
+									<input type="email" class="form-control" required
+										ng-model="di.email" id="inputEmail3" name="Email"
+										placeholder="Email"> <span style="color: red"
+										ng-show="formDI.$submitted && formDI.Email.$error.required">Email
+										is required.</span> <span style="color: red"
+										ng-show="formDI.$submitted && formDI.Email.$invalid">Email
+										Wrong Format .</span>
+
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="inputEmail3" class="col-sm-3 col-form-label">City</label>
+								<div class="col-sm-6">
+									<input type="text" class="form-control" required
+										ng-model="di.city" id="inputEmail3" name="City"
+										placeholder="City"> <span style="color: red"
+										ng-show="formDI.$submitted && formDI.City.$error.required">City
+										is required.</span>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="inputEmail3" class="col-sm-3 col-form-label">State</label>
+								<div class="col-sm-6">
+									<input type="text" class="form-control" required
+										ng-model="di.state" id="inputEmail3" name="State"
+										placeholder="State"> <span style="color: red"
+										ng-show="formDI.$submitted && formDI.State.$error.required">State
+										is required.</span>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="inputEmail3" class="col-sm-3 col-form-label">Key</label>
+								<div class="col-sm-6">
+									<input type="text" class="form-control" ng-model="di.key"
+										ng-init="di.key='1440866BAM000'" id="inputEmail3" readonly>
+
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="inputEmail3" class="col-sm-3 col-form-label">Country</label>
+								<div class="col-sm-6">
+									<input type="text" class="form-control" required
+										ng-model="di.country" id="inputEmail3" name="Country"
+										placeholder="Country"> <span style="color: red"
+										ng-show="formDI.$submitted && formDI.Country.$error.required">Country
+										is required.</span>
+
+								</div>
+							</div>
+
+							<div class="form-group row">
+								<label for="inputEmail3" class="col-sm-3 col-form-label">Start
+									Date</label>
+								<div class="col-sm-6">
+									<input type="text" class="form-control" required
+										ng-model="di.dateDebut" id="inputEmail3"
+										placeholder="dd-MM-yyyy" name="Start"
+										ng-pattern="/^(\d{1,2})-(\d{1,2})-(\d{4})$/"> <span
+										style="color: red"
+										ng-show="formDI.$submitted && formDI.Start.$error.required">Start
+										Date is required.</span> <span style="color: red"
+										ng-show="formDI.$submitted && formDI.Start.$invalid">Wrong
+										Date Format</span>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="inputEmail3" class="col-sm-3 col-form-label">Expired
+									Date</label>
+								<div class="col-sm-6">
+									<input type="text" class="form-control" required
+										ng-model="di.dateFin" id="inputEmail3" name="Expired"
+										ng-pattern="/^(\d{1,2})-(\d{1,2})-(\d{4})$/"
+										placeholder="dd-MM-yyyy"> <span style="color: red"
+										ng-show="formDI.$submitted && formDI.Expired.$error.required">
+										Expired Date is required.</span> <span style="color: red"
+										ng-show="formDI.$submitted && formDI.Expired.$invalid">Wrong
+										Date Format</span>
+								</div>
+							</div>
+
+							<div class="form-group row">
+								<label for="inputEmail3" class="col-sm-3 col-form-label"></label>
+								<div class="col-sm-6">
+
+
+									<button
+										ng-click="formDI.$valid && generateLicenseDataIntegration(di)">
+										<b style="color: green; font-size: 20px;">Generate key</b>
+									</button>
+
+								</div>
+
+
+
+							</div>
+
+						</div>
+						<div class="col-md-6">
+
+							<textarea class="form-control" rows="4" id="licenseKeyAdmin"
+								readonly
+								placeholder="UniQ  Financial Data Integration License Key..."
+								ng-model="licenseKeyDataIntegraion"
+								name="licenseKeyDataIntegraion">{{licenseKeyDataIntegraion}}</textarea>
+							<button onclick="copy()">
+								<b style="color: green; font-size: 10px;">Copy</b>
+							</button>
+						</div>
+
+
+					</form>
+
+
+				</div>
+
+				<!-- ***********************  Regulatory Report       ***********************            -->
+
+
+
+				<div class="tab-pane fade" id="tab15primary"
+					ng-controller="UniQRegulatoryReportController">
+
+					<form name="formREG" novalidate>
+						<h2 align="left" style="margin: 10px 20px 30px 10px">
+							<a href="#">UniQ Regulatory Report License</a>
+						</h2>
+						<div class="col-md-6">
+
+
+							<div class="form-group row">
+								<label for="inputEmail3" class="col-sm-3 col-form-label">Application
+									Name</label>
+								<div class="col-sm-6">
+									<input type="text" class="form-control" ng-model="reg.appName"
+										ng-init="reg.appName='UniQ_Soft_Technology'" id="inputEmail3"
+										readonly>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="inputEmail3" class="col-sm-3 col-form-label">Module
+									Name</label>
+								<div class="col-sm-6">
+									<input type="text" class="form-control" ng-model="reg.module"
+										ng-init="reg.module='REG'" id="inputEmail3" readonly>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="inputEmail3" class="col-sm-3 col-form-label">Version</label>
+								<div class="col-sm-6">
+									<input type="text" class="form-control" name="Version" required
+										ng-model="reg.version" id="inputEmail3" placeholder="1.1.1">
+									<span style="color: red"
+										ng-show="formREG.$submitted && formREG.Version.$error.required">Version
+										is required.</span>
+
+
+								</div>
+
+
+
+
+							</div>
+							<div class="form-group row">
+								<label for="inputEmail3" class="col-sm-3 col-form-label">Email</label>
+								<div class="col-sm-6">
+									<input type="email" class="form-control" required
+										ng-model="reg.email" id="inputEmail3" name="Email"
+										placeholder="Email"> <span style="color: red"
+										ng-show="formREG.$submitted && formREG.Email.$error.required">Email
+										is required.</span> <span style="color: red"
+										ng-show="formREG.$submitted && formREG.Email.$invalid">Email
+										Wrong Format .</span>
+
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="inputEmail3" class="col-sm-3 col-form-label">City</label>
+								<div class="col-sm-6">
+									<input type="text" class="form-control" required
+										ng-model="reg.city" id="inputEmail3" name="City"
+										placeholder="City"> <span style="color: red"
+										ng-show="formREG.$submitted && formREG.City.$error.required">City
+										is required.</span>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="inputEmail3" class="col-sm-3 col-form-label">State</label>
+								<div class="col-sm-6">
+									<input type="text" class="form-control" required
+										ng-model="reg.state" id="inputEmail3" name="State"
+										placeholder="State"> <span style="color: red"
+										ng-show="formREG.$submitted && formREG.State.$error.required">State
+										is required.</span>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="inputEmail3" class="col-sm-3 col-form-label">Key</label>
+								<div class="col-sm-6">
+									<input type="text" class="form-control" ng-model="reg.key"
+										ng-init="reg.key='1440866BAM000'" id="inputEmail3" readonly>
+
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="inputEmail3" class="col-sm-3 col-form-label">Country</label>
+								<div class="col-sm-6">
+									<input type="text" class="form-control" required
+										ng-model="reg.country" id="inputEmail3" name="Country"
+										placeholder="Country"> <span style="color: red"
+										ng-show="formREG.$submitted && formREG.Country.$error.required">Country
+										is required.</span>
+
+								</div>
+							</div>
+
+							<div class="form-group row">
+								<label for="inputEmail3" class="col-sm-3 col-form-label">Start
+									Date</label>
+								<div class="col-sm-6">
+									<input type="text" class="form-control" required
+										ng-model="reg.dateDebut" id="inputEmail3"
+										placeholder="dd-MM-yyyy" name="Start"
+										ng-pattern="/^(\d{1,2})-(\d{1,2})-(\d{4})$/"> <span
+										style="color: red"
+										ng-show="formREG.$submitted && formREG.Start.$error.required">Start
+										Date is required.</span> <span style="color: red"
+										ng-show="formREG.$submitted && formREG.Start.$invalid">Wrong
+										Date Format</span>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="inputEmail3" class="col-sm-3 col-form-label">Expired
+									Date</label>
+								<div class="col-sm-6">
+									<input type="text" class="form-control" required
+										ng-model="reg.dateFin" id="inputEmail3" name="Expired"
+										ng-pattern="/^(\d{1,2})-(\d{1,2})-(\d{4})$/"
+										placeholder="dd-MM-yyyy"> <span style="color: red"
+										ng-show="formREG.$submitted && formREG.Expired.$error.required">
+										Expired Date is required.</span> <span style="color: red"
+										ng-show="formREG.$submitted && formREG.Expired.$invalid">Wrong
+										Date Format</span>
+								</div>
+							</div>
+
+							<div class="form-group row">
+								<label for="inputEmail3" class="col-sm-3 col-form-label"></label>
+								<div class="col-sm-6">
+
+
+									<button
+										ng-click="formREG.$valid && generateLicenseRegulatoryReport(reg)">
+										<b style="color: green; font-size: 20px;">Generate key</b>
+									</button>
+
+								</div>
+
+
+
+							</div>
+
+						</div>
+						<div class="col-md-6">
+
+							<textarea class="form-control" rows="4" id="licenseKeyAdmin"
+								readonly
+								placeholder="UniQ Financial RegulatoryReport License Key..."
+								ng-model="licenseKeyRegulatoryReport"
+								name="licenseKeyRegulatoryReport">{{licenseKeyRegulatoryReport}}</textarea>
+							<button onclick="copy()">
+								<b style="color: green; font-size: 10px;">Copy</b>
+							</button>
+						</div>
+
+
+					</form>
+
+
+				</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 			</div>
 		</div>
 	</div>

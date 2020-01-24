@@ -699,4 +699,89 @@ angular.module('licenseApp', []).controller('UniQLicenseController',
 
 			};
 
+		} ])
+		
+			.controller('UniQDataIntegrationController',
+		[ '$scope', '$http', '$location', function($scope, $http, $location) {
+			$scope.datePattern = '/^(\d{1,2})-(\d{1,2})-(\d{4})$/';
+			$scope.generateLicenseDataIntegration = function(di) {
+				   
+				$scope.di = di;
+				var url = "/UniQ_License/generateLicenseDataIntegration";
+				var uniq1 = {
+					appName : $scope.di.appName,
+					module : $scope.di.module,
+					version : $scope.di.version,
+					email : $scope.di.email,
+					city : $scope.di.city,
+					state : $scope.di.state,
+					key : $scope.di.key,
+					country : $scope.di.country,
+					dateDebut : $scope.di.dateDebut,
+					dateFin : $scope.di.dateFin
+				};
+
+			
+				$.ajax({
+					type : "POST",
+					contentType : 'application/json; charset=utf-8',
+					url : "/UniQ_License/generateLicenseDataIntegration",
+					data : JSON.stringify($scope.di),
+					async : false,
+					// Note it is important
+					success : function(result) {
+						$scope.licenseKeyDataIntegraion = result;
+
+					},
+
+				});
+
+			};
+
+		} ])
+		
+		
+			.controller('UniQRegulatoryReportController',
+		[ '$scope', '$http', '$location', function($scope, $http, $location) {
+			$scope.datePattern = '/^(\d{1,2})-(\d{1,2})-(\d{4})$/';
+			$scope.generateLicenseRegulatoryReport = function(reg) {
+				   
+				$scope.reg = reg;
+				var url = "/UniQ_License/generateLicenseRegulatoryReport";
+				var uniq1 = {
+					appName : $scope.reg.appName,
+					module : $scope.reg.module,
+					version : $scope.reg.version,
+					email : $scope.reg.email,
+					city : $scope.reg.city,
+					state : $scope.reg.state,
+					key : $scope.reg.key,
+					country : $scope.reg.country,
+					dateDebut : $scope.reg.dateDebut,
+					dateFin : $scope.reg.dateFin
+				};
+
+			
+				$.ajax({
+					type : "POST",
+					contentType : 'application/json; charset=utf-8',
+					url : "/UniQ_License/generateLicenseRegulatoryReport",
+					data : JSON.stringify($scope.reg),
+					async : false,
+					// Note it is important
+					success : function(result) {
+						$scope.licenseKeyRegulatoryReport = result;
+						
+					},
+
+				});
+
+			};
+
 		} ]);
+
+
+
+
+
+

@@ -231,6 +231,32 @@ public class UniqLicenseRest {
 	}
 	
 	
+	
+	@RequestMapping(value = "/generateLicenseDataIntegration", method = RequestMethod.POST)
+	public @ResponseBody String generateLicenseDataIntegration(@RequestBody License license) {
+
+		String targetUniQLicense = license.getAppName() + "#" + license.getEmail() + "#" + license.getCity() + "#"
+				+ license.getDateDebut() + "#" + license.getVersion() + "#" + license.getDateFin() + "#"
+				+ license.getCountry() + "#" + license.getModule() + "#" + license.getState();
+		String decryptedUniQLicense = encrypt(targetUniQLicense);
+		System.out.println(decryptedUniQLicense);
+		return decryptedUniQLicense;
+
+	}
+	
+	@RequestMapping(value = "/generateLicenseRegulatoryReport", method = RequestMethod.POST)
+	public @ResponseBody String generateLicenseRegulatoryReport(@RequestBody License license) {
+
+		String targetUniQLicense = license.getAppName() + "#" + license.getEmail() + "#" + license.getCity() + "#"
+				+ license.getDateDebut() + "#" + license.getVersion() + "#" + license.getDateFin() + "#"
+				+ license.getCountry() + "#" + license.getModule() + "#" + license.getState();
+		String decryptedUniQLicense = encrypt(targetUniQLicense);
+		System.out.println(decryptedUniQLicense);
+		return decryptedUniQLicense;
+
+	}
+	
+	
 	public String encrypt(String unencryptedString) {
 		String encryptedString = null;
 		try {

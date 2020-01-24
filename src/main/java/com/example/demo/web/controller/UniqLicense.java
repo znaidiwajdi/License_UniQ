@@ -183,6 +183,31 @@ public class UniqLicense {
 	private static String date_debutEX;
 	private static String date_expiredEX;
 	private static String moduleEX;
+	
+	
+	
+	
+	
+	//////////////////// License Data Integration ///////////////////
+	private static String appNameDI;
+	private static String emailDI;
+	private static String cityDI;
+	private static String stateDI;
+	private static String versionDI;
+	private static String countryDI;
+	private static String date_debutDI;
+	private static String date_expiredDI;
+	private static String moduleDI;
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	private static int EXIT_STATUS_ERR_CANT_OUR_PROPERTIES_FILE = 4;
 	SecretKey key;
 	@Autowired
